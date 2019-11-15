@@ -12,6 +12,9 @@ RSpec.describe AmazonProducts::AmazonProductsService do
     context 'fetch an amazon product by its ASIN' do
       it 'succeeds' do
         @service.fetch_product('B002QYW8LW')
+
+        byebug
+
       end
 
       it 'fails (product does not exists)' do
