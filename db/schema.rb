@@ -17,9 +17,10 @@ ActiveRecord::Schema.define(version: 2019_11_15_032828) do
 
   create_table "amazon_products", force: :cascade do |t|
     t.string "asin"
+    t.string "name"
     t.string "category"
-    t.decimal "rank"
-    t.decimal "weight"
+    t.string "rank"
+    t.string "weight"
     t.string "dimensions"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
