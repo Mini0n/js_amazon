@@ -1,0 +1,90 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://www.amazon.com/dp/B07G2PY8KH
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.17.0
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      content-type:
+      - text/html;charset=UTF-8
+      transfer-encoding:
+      - chunked
+      connection:
+      - close
+      server:
+      - Server
+      date:
+      - Fri, 15 Nov 2019 23:59:32 GMT
+      strict-transport-security:
+      - max-age=47474747; includeSubDomains; preload
+      vary:
+      - Accept-Encoding,User-Agent,X-Amzn-CDN-Cache,X-Amzn-AX-Treatment
+      p3p:
+      - policyref="https://www.amazon.com/w3c/p3p.xml",CP="CAO DSP LAW CUR ADM IVAo
+        IVDo CONo OTPo OUR DELi PUBi OTRi BUS PHY ONL UNI PUR FIN COM NAV INT DEM
+        CNT STA HEA PRE LOC GOV OTC "
+      cache-control:
+      - no-cache, no-transform
+      x-xss-protection:
+      - 1;
+      x-content-type-options:
+      - nosniff
+      x-frame-options:
+      - SAMEORIGIN
+      set-cookie:
+      - session-id=143-2424051-2251550; Domain=.amazon.com; Expires=Tue, 01-Jan-2036
+        08:00:01 GMT; Path=/, session-id-time=2082787201l; Domain=.amazon.com; Expires=Tue,
+        01-Jan-2036 08:00:01 GMT; Path=/, i18n-prefs=USD; Domain=.amazon.com; Expires=Tue,
+        01-Jan-2036 08:00:01 GMT; Path=/, sp-cdn="L5Z9:MX"; Version=1; Domain=.amazon.com;
+        Max-Age=508924829; Expires=Tue, 01-Jan-2036 08:00:01 GMT; Path=/; Secure;
+        HttpOnly
+      x-amz-rid:
+      - ATGP2PR61J6GP17V3ZEJ
+      x-cache:
+      - Error from cloudfront
+      via:
+      - 1.1 d5222efd028f6a91ac61950afeed7031.cloudfront.net (CloudFront)
+      x-amz-cf-pop:
+      - IAH50-C3
+      x-amz-cf-id:
+      - Je2HL0f12Y8ZyDHzCaX2RjqbN1g-vHM68DYnUxcHqwE4JydNwUI5-Q==
+    body:
+      encoding: ASCII-8BIT
+      string: "<!doctype html>\n<html>\n  <head>\n    <meta charset=\"utf-8\">\n    <meta
+        http-equiv=\"x-ua-compatible\" content=\"ie=edge\">\n    <meta name=\"viewport\"
+        content=\"width=device-width, initial-scale=1, shrink-to-fit=no\">\n    <title>\n
+        \     Page Not Found\n    </title>\n    <style>\n      html,body{padding:0;margin:0}img{border:0}#a{background:#232f3e;padding:11px
+        11px 11px 192px}#b{position:absolute;left:22px;top:12px}#c{position:relative;max-width:800px;padding:0
+        40px 0 0}#e,#f{height:35px;border:0;font-size:1em}#e{width:100%;margin:0;padding:0
+        10px;border-radius:4px 0 0 4px}#f{cursor:pointer;background:#febd69;font-weight:bold;border-radius:0
+        4px 4px 0;-webkit-appearance:none;position:absolute;top:0;right:0;padding:0
+        12px}@media(max-width:500px){#a{padding:55px 10px 10px}#b{left:6px}}#g{text-align:center;margin:30px
+        0}#g img{max-width:90%}#d{display:none}#d[src]{display:inline}\n    </style>\n
+        \ </head>\n  <body>\n    <!--\n    To discuss automated access to Amazon data
+        please contact api-services-support@amazon.com.\r\n\r\nFor information about
+        migrating to our APIs refer to our Marketplace APIs at https://developer.amazonservices.com/ref=rm_5_sv,
+        or our Product Advertising API at https://affiliate-program.amazon.com/gp/advertising/api/detail/main.html/ref=rm_5_ac
+        for advertising use cases.\n    -->\n  <a href=\"/\">\n    <img id=\"b\" src=\"https://images-na.ssl-images-amazon.com/images/G/01/error/logo._CB294837474_.png\"
+        alt=\"Amazon\"/>\n  </a>\n  <form id=\"a\" accept-charset=\"utf-8\" action=\"/s\"
+        method=\"GET\" role=\"search\">\n    <div id=\"c\">\n      <input id=\"e\"
+        name=\"field-keywords\" placeholder=\"Search\">\n      <input id=\"f\" type=\"submit\"
+        value=\"Go\">\n    </div>\n  </form>\n    <div id=\"g\">\n      <div>\n        <a
+        href=\"/\">\n          <img src=\"https://images-na.ssl-images-amazon.com/images/G/01/error/en_US/title._CB466097777_.png\"\n
+        \              alt=\"Sorry! We couldn't find that page. Try searching or go
+        to Amazon's home page.\"/>\n        </a>\n      </div>\n      <a href=\"/dogsofamazon\"
+        target=\"_blank\" rel=\"noopener noreferrer\">\n        <img id=\"d\" alt=\"Dogs
+        of Amazon\">\n      </a>\n      <script>\n        document.getElementById(\"d\").src=\"https://images-na.ssl-images-amazon.com/images/G/01/error/en_US/\"
+        + (Math.floor(Math.random() *200) + 1) + \"._CB465791933_.jpg\";\n      </script>\n
+        \   </div>\n  </body>\n</html>"
+    http_version: 
+  recorded_at: Fri, 15 Nov 2019 23:59:32 GMT
+recorded_with: VCR 5.0.0

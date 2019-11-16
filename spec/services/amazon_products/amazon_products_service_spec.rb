@@ -8,7 +8,7 @@ RSpec.describe AmazonProducts::AmazonProductsService do
     @service = AmazonProducts::AmazonProductsService.new
   end
 
-  describe '#fetch_product', :vcr, record: :new_episodes do
+  describe '#fetch_product', :vcr, record: :none do
     context 'fetch an amazon product by its ASIN' do
       it 'succeeds' do
         result = @service.fetch_product('B002QYW8LW')
