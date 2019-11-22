@@ -86,6 +86,7 @@ module AmazonProducts
     #
     # @returns: [String]
     def get_weight(details)
+      byebug
       details.select{ |k,v| k.include?('Weight') }.first.last
     end
 
@@ -118,12 +119,17 @@ module AmazonProducts
     def product_details_book(doc)
       res = {}
       details = doc.css('#detail-bullets').css('li')
-
       details.each do |detail|
-        cont = detail.children
-        res.merge!({cont.first.inner_text.strip => cont.last.inner_text.strip})
+        key = detail.children[0].inner_text
+        value = detail.children[1].inner_text
+        value = value.gsub('(','') if key.include?('Weight')
+        res.merge!({key.strip => value.strip})
       end
       res
+    end
+
+    def book_weight(weight_string)
+      
     end
 
     # Checks if a product has been stored by its ANSI
