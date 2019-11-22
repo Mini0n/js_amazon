@@ -33,15 +33,23 @@ module AmazonProducts
     # @param: [Faraday::Response]
     #
     # @returns: [Hash <AmazonProduct>]
-    def parse_product(product_response, asin)
-      doc = Nokogiri::HTML(product_response.body)
-      details = product_details(doc)
+    def parse_product(conn_result, asin)
+      doc = Nokogiri::HTML(conn_result.body)
+
+      # Load details when response body is to long, Nokogiri won't load it all
+      d_init = conn_result.body.index("<div id=\"prodDetails\"")
+      # book case
+      d_init = conn_result.body.index("<div id=\"detail-bullets\"") if d_init.nil?
+      d_end = conn_result.body.length
+
+      details_doc = Nokogiri::HTML(conn_result.body[d_init..d_end])
+      details = product_details(details_doc)
 
       {
         asin: asin,
         name: get_name(doc),
         category: get_category(doc),
-        rank: get_rank(doc),
+        rank: get_rank(details_doc),
         weight: get_weight(details),
         dimensions: get_dimensions(details)
       }
@@ -65,11 +73,11 @@ module AmazonProducts
     end
 
     # Gets the rank information from the Nokogiri document
-    # @param: [Nokogiri::HTML::Document]
+    # @param: [Hash] product_details result hash
     #
     # @returns: [String]
-    def get_rank(doc)
-      doc.css('.a-icon.a-icon-star.a-star-4-5 > .a-icon-alt').first.inner_text
+    def get_rank(details)
+      details.css('.a-icon-alt').first.inner_text
          .delete('^0-9. ').strip.split(' ').join('/')
     end
 
@@ -96,9 +104,24 @@ module AmazonProducts
     # @return [Hash<String:String>]
     def product_details(doc)
       details = doc.css('#prodDetails').css('tr > th, td')
+      # book case
+      return product_details_book(doc) if details.empty?
+
       res = {}
       details.each_slice(2) do |n, v| 
         res.merge!({n.inner_text.strip => v.inner_text.strip}) 
+      end
+      res
+    end
+
+    # Same as product_details but for books
+    def product_details_book(doc)
+      res = {}
+      details = doc.css('#detail-bullets').css('li')
+
+      details.each do |detail|
+        cont = detail.children
+        res.merge!({cont.first.inner_text.strip => cont.last.inner_text.strip})
       end
       res
     end
@@ -110,8 +133,6 @@ module AmazonProducts
     def product_stored?(asin)
       AmazonProduct.where(asin: asin).first
     end
-
-
 
   end
 end
