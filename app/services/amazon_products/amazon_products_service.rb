@@ -86,7 +86,6 @@ module AmazonProducts
     #
     # @returns: [String]
     def get_weight(details)
-      byebug
       details.select{ |k,v| k.include?('Weight') }.first.last
     end
 
